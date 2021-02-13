@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "gen-docs": "graphdoc -s ./schema.json -o ./public/docs/schema --force"
   },
   "dependencies": {
     "next": "^10.0.0",
