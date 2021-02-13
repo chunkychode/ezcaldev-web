@@ -6,9 +6,7 @@ export default function Home() {
   return (
     <Layout>
       <div>
-        <h1 className="title">
-          Welcome to <a href="https://nextjs.org">EzCalDev</a>
-        </h1>
+        <h1 className="title">Welcome to EzCalDev</h1>
 
         <p className="description">Calendaring as a service</p>
 
