@@ -1,9 +1,9 @@
 import fetchJson from "../../lib/fetchJson";
 import withSession from "../../lib/session";
 
-const authenticateUser = async ({ email, password }) => {
+const registerUser = async ({ email, password }) => {
   try {
-    const url = `${process.env.AUTH_URL}/Login`;
+    const url = `${process.env.AUTH_URL}/Register`;
     const body = { email, password };
     const post = {
       method: "post",
@@ -21,7 +21,7 @@ export default withSession(async (req, res) => {
     if (req.method === "POST") {
       const { email, password } = req.body;
 
-      const res = await authenticateUser({ email, password });
+      const res = await registerUser({ email, password });
       console.log("res", res);
 
       if (res?.message !== "Invalid credentials") {

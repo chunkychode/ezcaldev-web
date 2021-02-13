@@ -16,7 +16,7 @@ export default function Home() {
             <p>Find in-depth information about our features and API.</p>
           </a>
 
-          <Link href="/signup">
+          <Link href="/register">
             <a className="card">
               <h3>Try it for free &rarr;</h3>
               <p>Sign up now to try our graphQL playground for free.</p>

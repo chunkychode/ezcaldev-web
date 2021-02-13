@@ -1,18 +1,56 @@
 {
-  "name": "learn-starter",
-  "version": "0.1.0",
+  "name": "with-iron-session",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "gen-docs": "graphdoc -s ./schema.json -o ./public/docs/schema --force"
+    "dev": "next dev",
+    "start": "next start"
   },
-  "dependencies": {
-    "next": "^10.0.0",
-    "next-iron-session": "^4.1.11",
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es6": true,
+      "node": true
+    },
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "ecmaVersion": 2019,
+      "sourceType": "module"
+    },
+    "settings": {
+      "react": {
+        "version": "16.3.0"
+      }
+    },
+    "plugins": [
+      "react",
+      "react-hooks"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended"
+    ],
+    "rules": {
+      "react-hooks/exhaustive-deps": "warn",
+      "react-hooks/rules-of-hooks": "error",
+      "react/no-unescaped-entities": "off",
+      "react/prop-types": "warn"
+    },
+    "ignorePatterns": [
+      "node_modules/"
+    ]
+  },
+  "devDependencies": {
+    "next": "10.0.6",
+    "next-iron-session": "4.1.10",
+    "node-fetch": "2.6.1",
+    "prop-types": "15.7.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "swr": "^0.4.2"
+    "swr": "0.4.1"
   }
 }
