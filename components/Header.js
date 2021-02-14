@@ -26,13 +26,8 @@ const Header = () => {
           {user?.isLoggedIn && (
             <>
               <li>
-                <Link href="/profile-sg">
-                  <a>welcome {user.email} sg</a>
-                </Link>
-              </li>
-              <li>
                 <Link href="/profile-ssr">
-                  <a>welcome {user.email} ssr</a>
+                  <a>welcome {user.email}</a>
                 </Link>
               </li>
               <li>

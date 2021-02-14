@@ -1,16 +1,21 @@
+import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { message } from "statuses";
 import Layout from "../components/Layout";
 import { authenticateUser, verifyEmail as _verifyEmail } from "../lib/auth";
 import { createCalOwner, createClaimsForCal } from "../lib/calOnboarding";
+import CodeSample from "../components/CodeSample";
 
 export default function verifyEmail({ data }) {
   return (
     <Layout>
       <div>
         {data.emailVerified && (
-          <h1 className="title">Thank you for verifying your email</h1>
+          <>
+            <h1 className="title">Thank you for verifying your email</h1>
+            <CodeSample />
+          </>
         )}
         {!data.emailVerified && (
           <h1 className="title">Uh oh something went wrong.</h1>

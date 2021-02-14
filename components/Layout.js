@@ -123,6 +123,19 @@ const Layout = ({ children }) => (
           line-height: 1.5;
         }
 
+        label {
+          width: 80%;
+          word-wrap: break-word;
+        }
+
+        pre {
+          white-space: pre-wrap; /* css-3 */
+          white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+          white-space: -pre-wrap; /* Opera 4-6 */
+          white-space: -o-pre-wrap; /* Opera 7 */
+          word-wrap: break-word; /* Internet Explorer 5.5+ */
+        }
+
         .logo {
           height: 1em;
         }
@@ -133,6 +146,26 @@ const Layout = ({ children }) => (
             flex-direction: column;
           }
         }
+
+
+      footer {
+        width: 100%;
+        height: 100px;
+        border-top: 1px solid #eaeaea;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      footer img {
+        margin-left: 0.5rem;
+      }
+
+      footer a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
       `}</style>
       <Header />
 
