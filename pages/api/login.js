@@ -1,20 +1,5 @@
-import fetchJson from "../../lib/fetchJson";
+import { authenticateUser } from "../../lib/auth";
 import withSession from "../../lib/session";
-
-const authenticateUser = async ({ email, password }) => {
-  try {
-    const url = `${process.env.AUTH_URL}/Login`;
-    const body = { email, password };
-    const post = {
-      method: "post",
-      body: JSON.stringify(body),
-    };
-    const res = await fetchJson(url, post);
-    return res;
-  } catch (e) {
-    throw e;
-  }
-};
 
 export default withSession(async (req, res) => {
   try {

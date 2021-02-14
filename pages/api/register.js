@@ -1,20 +1,5 @@
-import fetchJson from "../../lib/fetchJson";
+import { registerUser } from "../../lib/auth";
 import withSession from "../../lib/session";
-
-const registerUser = async ({ email, password }) => {
-  try {
-    const url = `${process.env.AUTH_URL}/Register`;
-    const body = { email, password };
-    const post = {
-      method: "post",
-      body: JSON.stringify(body),
-    };
-    const res = await fetchJson(url, post);
-    return res;
-  } catch (e) {
-    throw e;
-  }
-};
 
 export default withSession(async (req, res) => {
   try {
