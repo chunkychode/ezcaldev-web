@@ -8,7 +8,7 @@ const Register = () => {
   const passwordInput = useRef();
 
   const { mutateUser } = useUser({
-    redirectTo: "/profile-sg",
+    redirectTo: "/register-success",
     redirectIfFound: true,
   });
 
