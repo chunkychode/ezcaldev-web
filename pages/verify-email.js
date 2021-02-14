@@ -7,8 +7,12 @@ export default function verifyEmail({ data }) {
   return (
     <Layout>
       <div>
-        <h1 className="title">Thank you for verifying your email</h1>
-        {data.emailVerified && <div>Verified</div>}
+        {data.emailVerified && (
+          <h1 className="title">Thank you for verifying your email</h1>
+        )}
+        {!data.emailVerified && (
+          <h1 className="title">Uh oh something went wrong.</h1>
+        )}
       </div>
     </Layout>
   );
