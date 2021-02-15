@@ -9,7 +9,12 @@ const SsrProfile = ({ user }) => {
       <h1>Your profile</h1>
       {user?.isLoggedIn && (
         <>
-          <pre>{JSON.stringify(user)}</pre>
+          <div>You are logged in as {user.email}</div>
+          {user.emailVerified ? (
+            <div>Your account has been verified</div>
+          ) : (
+            <div>Your account has not been verified</div>
+          )}
         </>
       )}
     </Layout>

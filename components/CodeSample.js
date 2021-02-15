@@ -3,14 +3,15 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const CodeSample = ({ user }) => {
   const emailStub = user.email || "EMAIL";
-  const authTokenStub = "AUTH_FROM_ABOVE";
+  const authTokenStub = user.authToken || "AUTH_FROM_ABOVE";
 
   const [copiedExample1, setCopiedExample1] = React.useState(false);
   const [copiedExample2, setCopiedExample2] = React.useState(false);
+  const [copiedHeader, setCopiedHeader] = React.useState(false);
 
   const example1 = `curl -i -X POST https://chunkyauth.azurewebsites.net/api/Login -H "Content-Type: application/json" -d "{\"email\":\"${emailStub}\", \"password\":\"PASSWORD\"}"`;
-  const example2 = `curl -i -X POST https://chunkycalql.azurewebsites.net/api/graphql -H "Content-Type: application/json" -H "Authorization: ${authTokenStub}" -d "{\"query\": \"query {Event {title}}\"}"`;
-
+  const example2 = `curl -i -X POST https://chunkycalql.azurewebsites.net/api/graphql -H "Content-Type: application/json" -H "Authorization: ${authTokenStub}" -d '{"query": "query {Event {title}}"}'`;
+  const playGroundHeader = `{"Authorization":"${authTokenStub}"}`;
   return (
     <ul>
       <li>
@@ -25,6 +26,7 @@ const CodeSample = ({ user }) => {
             onCopy={() => {
               setCopiedExample1(true);
               setCopiedExample2(false);
+              setCopiedHeader(false);
             }}
           >
             <button>Copy to clipboard with button</button>
@@ -43,21 +45,36 @@ const CodeSample = ({ user }) => {
           <u>Calendar playground</u>
         </a>
         <br />
-        <i>
-          don't forget to put the authorization header you got from the last
-          step.
-        </i>
+        <i>don't forget to put the authorization header</i>
+        <div style={{ width: 250 }}>
+          <pre>{playGroundHeader}</pre>
+        </div>
+        <CopyToClipboard
+          text={playGroundHeader}
+          onCopy={() => {
+            setCopiedHeader(true);
+            setCopiedExample2(false);
+            setCopiedExample1(false);
+          }}
+        >
+          <button>Copy to clipboard with button</button>
+        </CopyToClipboard>
+        {copiedHeader && <div>Copied!</div>}
         <br />
         <br />
         or curl like
         <br />
         <label>
-          <pre>{example2}</pre>
+          <div style={{ width: 250 }}>
+            {" "}
+            <pre>{example2}</pre>
+          </div>
           <CopyToClipboard
             text={example2}
             onCopy={() => {
               setCopiedExample2(true);
               setCopiedExample1(false);
+              setCopiedHeader(false);
             }}
           >
             <button>Copy to clipboard with button</button>
