@@ -47,16 +47,7 @@ export default function Home({ user }) {
 }
 
 export const getServerSideProps = withSession(async function ({ req, res }) {
-  const user = req.session.get("user");
-
-  if (!user) {
-    return {
-      redirect: {
-        destination: "/login",
-        permanent: false,
-      },
-    };
-  }
+  const user = req.session.get("user") || {}
 
   return {
     props: { user },

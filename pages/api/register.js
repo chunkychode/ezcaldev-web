@@ -12,7 +12,6 @@ export default withSession(async (req, res) => {
         const { authToken } = res;
 
         console.log("register authenticate user authToken", authToken);
-
         const user = { isLoggedIn: true, email, authToken };
         req.session.set("user", user);
         await req.session.save();

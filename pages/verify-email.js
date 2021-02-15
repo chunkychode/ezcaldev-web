@@ -3,18 +3,33 @@ import Head from "next/head";
 import Link from "next/link";
 import { message } from "statuses";
 import Layout from "../components/Layout";
+import { useRouter } from "next/router";
 import { authenticateUser, verifyEmail as _verifyEmail } from "../lib/auth";
 import { createCalOwner, createClaimsForCal } from "../lib/calOnboarding";
-import CodeSample from "../components/CodeSample";
+import useUser from "../lib/useUser";
+import fetchJson from "../lib/fetchJson";
 
 export default function verifyEmail({ data }) {
+  const { mutateUser } = useUser();
+  const router = useRouter();
+
+  // todo: below is hacky.. after we create claims, let's log the user out
   return (
     <Layout>
       <div>
         {data.emailVerified && (
           <>
             <h1 className="title">Thank you for verifying your email</h1>
-            <CodeSample />
+            <a
+              href="/api/logout"
+              onClick={async (e) => {
+                e.preventDefault();
+                await mutateUser(fetchJson("/api/logout"));
+                router.push("/login");
+              }}
+            >
+              Continue to login
+            </a>
           </>
         )}
         {!data.emailVerified && (

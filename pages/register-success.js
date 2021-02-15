@@ -8,7 +8,7 @@ export default function RegisterSuccess() {
       <div>
         <h1 className="title">Email Verification</h1>
         <p>
-          We just sent you a message from{" "}
+          We just sent you a message from {" "}
           <b>
             <i>noreply@vizipi.com</i>
           </b>
