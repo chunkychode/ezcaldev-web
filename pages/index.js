@@ -4,6 +4,18 @@ import Layout from "../components/Layout";
 import CodeSample from "../components/CodeSample";
 import withSession from "../lib/session";
 
+const renderEmailNotVerified = ({ user }) => {
+  if (user.isLoggedIn && !user.emailVerified) {
+    return <div>Please check your email inbox to verify your account</div>;
+  }
+};
+
+const renderEmailVerified = ({ user }) => {
+  if (user.isLoggedIn && user.emailVerified) {
+    return <CodeSample user={user} />;
+  }
+};
+
 export default function Home({ user }) {
   return (
     <Layout>
@@ -26,8 +38,8 @@ export default function Home({ user }) {
               </a>
             </Link>
           )}
-
-          {user?.isLoggedIn && <CodeSample user={user} />}
+          {renderEmailNotVerified({ user })}
+          {renderEmailVerified({ user })}
         </div>
       </div>
     </Layout>

@@ -54,6 +54,7 @@
     "swr": "0.4.1"
   },
   "dependencies": {
+    "jwt-decode": "^3.1.2",
     "react-copy-to-clipboard": "^5.0.3"
   }
 }
