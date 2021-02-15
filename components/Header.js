@@ -11,11 +11,6 @@ const Header = () => {
     <header>
       <nav>
         <ul>
-          <li>
-            <Link href="/">
-              <a>Home</a>
-            </Link>
-          </li>
           {!user?.isLoggedIn && (
             <li>
               <Link href="/login">
@@ -76,6 +71,7 @@ const Header = () => {
 
         header {
           padding: 0.2rem;
+          width: 100%;
           color: #fff;
           background-color: #333;
         }

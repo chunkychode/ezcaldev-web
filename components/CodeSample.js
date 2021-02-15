@@ -48,7 +48,6 @@ const CodeSample = () => {
         <br />
         or curl like
         <br />
-        <br />
         <label>
           <pre>{example2}</pre>
           <CopyToClipboard
