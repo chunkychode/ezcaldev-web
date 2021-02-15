@@ -7,10 +7,12 @@ export default withSession(async (req, res) => {
       const { email, password } = req.body;
 
       const res = await registerUser({ email, password });
-      console.log("res", res);
+      const { authToken } = res;
+
+      console.log("register authenticate user authToken", authToken);
 
       if (res?.message !== "Invalid credentials") {
-        const user = { isLoggedIn: true, email };
+        const user = { isLoggedIn: true, email, authToken };
         req.session.set("user", user);
         await req.session.save();
         return res.json(user);

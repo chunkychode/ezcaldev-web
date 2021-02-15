@@ -1,12 +1,15 @@
 import React from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
-const CodeSample = () => {
+const CodeSample = ({ user }) => {
+  const emailStub = user.email || "EMAIL";
+  const authTokenStub = "AUTH_FROM_ABOVE";
+
   const [copiedExample1, setCopiedExample1] = React.useState(false);
   const [copiedExample2, setCopiedExample2] = React.useState(false);
 
-  const example1 = `curl -i -X POST https://chunkyauth.azurewebsites.net/api/Login -H "Content-Type: application/json" -d "{\"email\":\"EMAIL\", \"password\":\"PASSWORD\"}"`;
-  const example2 = `curl -i -X POST https://chunkycalql.azurewebsites.net/api/graphql -H "Content-Type: application/json" -H "Authorization: AUTH_FROM_ABOVE" -d "{\"query\": \"query {Event {title}}\"}"`;
+  const example1 = `curl -i -X POST https://chunkyauth.azurewebsites.net/api/Login -H "Content-Type: application/json" -d "{\"email\":\"${emailStub}\", \"password\":\"PASSWORD\"}"`;
+  const example2 = `curl -i -X POST https://chunkycalql.azurewebsites.net/api/graphql -H "Content-Type: application/json" -H "Authorization: ${authTokenStub}" -d "{\"query\": \"query {Event {title}}\"}"`;
 
   return (
     <ul>

@@ -2,10 +2,9 @@ import Head from "next/head";
 import Link from "next/link";
 import Layout from "../components/Layout";
 import CodeSample from "../components/CodeSample";
-import useUser from "../lib/useUser";
+import withSession from "../lib/session";
 
-export default function Home() {
-  const { user } = useUser();
+export default function Home({ user }) {
   return (
     <Layout>
       <div>
@@ -28,9 +27,26 @@ export default function Home() {
             </Link>
           )}
 
-          {user?.isLoggedIn && <CodeSample />}
+          {user?.isLoggedIn && <CodeSample user={user} />}
         </div>
       </div>
     </Layout>
   );
 }
+
+export const getServerSideProps = withSession(async function ({ req, res }) {
+  const user = req.session.get("user");
+
+  if (!user) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: { user },
+  };
+});

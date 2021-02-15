@@ -8,7 +8,7 @@ const Login = () => {
   const passwordInput = useRef();
 
   const { mutateUser } = useUser({
-    redirectTo: "/profile-sg",
+    redirectTo: "/",
     redirectIfFound: true,
   });
 
