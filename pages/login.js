@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useState, useRef } from "react";
 import useUser from "../lib/useUser";
 import { Layout } from "../components";
@@ -53,6 +54,9 @@ const Login = () => {
           <div>
             <button type="submit">Sign in</button>
           </div>
+          <Link href="/reset-password">
+            <a>Forgot your password?</a>
+          </Link>
         </form>
       </div>
       <style jsx>{`
