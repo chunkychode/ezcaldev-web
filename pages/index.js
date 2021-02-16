@@ -25,7 +25,7 @@ export default function Home({ user }) {
         <p className="description">Calendaring as a service</p>
 
         <div className="grid">
-          <a href="/docs/schema/index.html" className="card">
+          <a href="/docs" className="card">
             <h3>Documentation &rarr;</h3>
             <p>Find in-depth information about our features and API.</p>
           </a>
