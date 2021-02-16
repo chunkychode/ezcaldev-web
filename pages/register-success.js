@@ -12,9 +12,9 @@ export default function RegisterSuccess() {
           <b>
             <i>noreply@vizipi.com</i>
           </b>{" "}
-          please verify your email by clicking the button in that email.
+          Please verify your email by clicking the button in that email.
           <br />
-          and you'll recieve the data enabling you to use our service.
+          and you'll receive the data enabling you to use our service.
           <br />
           <br />
           Many thanks
