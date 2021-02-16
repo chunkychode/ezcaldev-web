@@ -4,7 +4,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import PropTypes from "prop-types";
 
-const Layout = ({ children }) => (
+export const Layout = ({ children }) => (
   <>
     <div className="container">
       <Head>
@@ -174,8 +174,6 @@ const Layout = ({ children }) => (
     </div>
   </>
 );
-
-export default Layout;
 
 Layout.propTypes = {
   children: PropTypes.node,

@@ -1,4 +1,4 @@
-import Layout from "../components/Layout";
+import { Layout } from "../components";
 import withSession from "../lib/session";
 import PropTypes from "prop-types";
 

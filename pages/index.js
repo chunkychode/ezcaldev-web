@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import Layout from "../components/Layout";
+import { Layout } from "../components";
 import CodeSample from "../components/CodeSample";
 import withSession from "../lib/session";
 
@@ -47,7 +47,7 @@ export default function Home({ user }) {
 }
 
 export const getServerSideProps = withSession(async function ({ req, res }) {
-  const user = req.session.get("user") || {}
+  const user = req.session.get("user") || {};
 
   return {
     props: { user },

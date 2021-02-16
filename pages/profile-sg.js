@@ -1,5 +1,5 @@
 import useUser from '../lib/useUser'
-import Layout from '../components/Layout'
+import { Layout } from "../components";
 
 const SgProfile = () => {
   const { user } = useUser({ redirectTo: '/login' })

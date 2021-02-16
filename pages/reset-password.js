@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import useUser from "../lib/useUser";
-import Layout from "../components/Layout";
+import { Layout } from "../components";
 import fetchJson from "../lib/fetchJson";
 
 const ResetPassword = () => {
