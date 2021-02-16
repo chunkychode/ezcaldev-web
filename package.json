@@ -5,7 +5,8 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "start": "next start"
+    "start": "next start",
+    "gen-docs": "graphdoc -s ./schema.json -o ./public/docs/schema --force"
   },
   "eslintConfig": {
     "env": {
