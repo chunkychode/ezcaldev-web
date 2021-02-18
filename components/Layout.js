@@ -21,7 +21,7 @@ export const Layout = ({ children }) => (
       `}</style>
       <Header />
       <main>{children}</main>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   </>
 );
