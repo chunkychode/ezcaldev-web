@@ -7,7 +7,11 @@ const resetPassword = async (req, res) => {
       headers: { host },
     } = req;
     await _resetPassword({ host, email });
-    res.status(200);
+    res.status(200).send({
+      data: {
+        message: "OK",
+      },
+    });
   }
 };
 

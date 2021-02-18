@@ -45,18 +45,19 @@
       "node_modules/"
     ]
   },
-  "devDependencies": {
-    "next": "10.0.6",
+  "dependencies": {
     "next-iron-session": "4.1.10",
     "node-fetch": "2.6.1",
     "prop-types": "15.7.2",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "swr": "0.4.1"
-  },
-  "dependencies": {
+    "swr": "0.4.1",
+    "next": "10.0.6",
     "jwt-decode": "^3.1.2",
     "react-copy-to-clipboard": "^5.0.3",
-    "react-iframe": "^1.8.0"
+    "react-iframe": "^1.8.0",
+    "react": "17.0.1",
+    "react-dom": "^17.0.1",
+    "autoprefixer": "^10.0.4",
+    "postcss": "^8.1.10",
+    "tailwindcss": "^2.0.2"
   }
 }

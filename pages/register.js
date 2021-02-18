@@ -38,32 +38,61 @@ const Register = () => {
 
   return (
     <Layout>
-      <div className="register">
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>
-              Email: <input type="text" ref={emailInput} />
-            </label>
-          </div>
-          <div>
-            <label>
-              Password: <input type="password" ref={passwordInput} />
-            </label>
-          </div>
-          <div>
-            <button type="submit">Register</button>
-          </div>
-        </form>
+      <div className="flex items-center h-screen w-full bg-teal-lighter">
+        <div className="w-full bg-gray-600 rounded shadow-lg p-8 m-4 md:max-w-sm md:mx-auto">
+          <h1 className="block w-full text-center text-grey-darkest mb-6">
+            Register
+          </h1>
+          <form
+            className="mb-4 md:flex md:flex-wrap md:justify-between"
+            action="/"
+            method="post"
+          >
+            <div className="flex flex-col mb-4 md:w-full">
+              <label
+                className="mb-2 uppercase font-bold text-lg text-grey-darkest"
+                htmlFor="email"
+              >
+                Email
+              </label>
+              <input
+                className="px-3 py-3 placeholder-gray-400 text-gray-700 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"
+                type="email"
+                name="email"
+                id="email"
+                ref={emailInput}
+              />
+            </div>
+            <div className="flex flex-col mb-6 md:w-full">
+              <label
+                className="mb-2 uppercase font-bold text-lg text-grey-darkest"
+                htmlFor="password"
+              >
+                Password
+              </label>
+              <input
+                className="px-3 py-3 placeholder-gray-400 text-gray-700 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"
+                type="password"
+                name="password"
+                id="password"
+                ref={passwordInput}
+              />
+            </div>
+            <button
+              className="block bg-blue-600 hover:bg-blue-800 text-white uppercase text-lg mx-auto p-4 rounded"
+              type="submit"
+            >
+              Create Account
+            </button>
+          </form>
+          <a
+            className="block w-full text-center no-underline text-sm text-grey-dark hover:text-grey-darker"
+            href="/login"
+          >
+            Already have an account?
+          </a>
+        </div>
       </div>
-      <style jsx>{`
-        .register {
-          max-width: 21rem;
-          margin: 0 auto;
-          padding: 1rem;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-        }
-      `}</style>
     </Layout>
   );
 };

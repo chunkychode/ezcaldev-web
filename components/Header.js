@@ -8,25 +8,42 @@ const Header = () => {
   const { user, mutateUser } = useUser();
   const router = useRouter();
   return (
-    <header>
-      <nav>
-        <ul>
-          {!user?.isLoggedIn && (
-            <li>
-              <Link href="/login">
-                <a>Login</a>
-              </Link>
-            </li>
-          )}
-          {user?.isLoggedIn && (
-            <>
-              <li>
-                <Link href="/profile-ssr">
-                  <a>welcome {user.email}</a>
-                </Link>
-              </li>
-              <li>
+    <>
+      <nav className="w-full z-30 bg-white top-0 text-gray-800">
+        <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
+          <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+            <a
+              className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase"
+              href="/"
+            >
+              EZCALDEV
+            </a>
+            <a
+              className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase"
+              href="/docs"
+            >
+              Docs
+            </a>
+            {!user?.isLoggedIn && (
+              <Link href="/login" passHref>
                 <a
+                  className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase"
+                  type="button"
+                >
+                  Login
+                </a>
+              </Link>
+            )}
+            {user?.isLoggedIn && (
+              <>
+                <Link href="/profile-ssr">
+                  <a className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase">
+                    welcome {user.email}
+                  </a>
+                </Link>
+
+                <a
+                  className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase"
                   href="/api/logout"
                   onClick={async (e) => {
                     e.preventDefault();
@@ -36,47 +53,12 @@ const Header = () => {
                 >
                   Logout
                 </a>
-              </li>
-            </>
-          )}
-        </ul>
+              </>
+            )}
+          </div>
+        </div>
       </nav>
-      <style jsx>{`
-        ul {
-          display: flex;
-          list-style: none;
-          margin-left: 0;
-          padding-left: 0;
-        }
-
-        li {
-          margin-right: 1rem;
-          display: flex;
-        }
-
-        li:first-child {
-          margin-left: auto;
-        }
-
-        a {
-          color: #fff;
-          text-decoration: none;
-          display: flex;
-          align-items: center;
-        }
-
-        a img {
-          margin-right: 1em;
-        }
-
-        header {
-          padding: 0.2rem;
-          width: 100%;
-          color: #fff;
-          background-color: #333;
-        }
-      `}</style>
-    </header>
+    </>
   );
 };
 

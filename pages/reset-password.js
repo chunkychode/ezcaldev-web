@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import useUser from "../lib/useUser";
+import Router from "next/router";
 import { Layout } from "../components";
 import fetchJson from "../lib/fetchJson";
 
@@ -16,11 +16,13 @@ const ResetPassword = () => {
     const body = JSON.stringify({ email });
 
     try {
-      await fetchJson("/api/reset-password", {
+      const res = await fetchJson("/api/reset-password", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body,
       });
+      console.log("res", res);
+      Router.push("/reset-password-success");
     } catch (error) {
       console.error("An unexpected error happened:", error);
       setErrorMsg(error.data.message);
@@ -29,27 +31,43 @@ const ResetPassword = () => {
 
   return (
     <Layout>
-      <div className="reset-password">
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>
-              Email: <input type="text" ref={emailInput} />
-            </label>
+      <div className="flex items-center h-screen w-full bg-teal-lighter">
+        <div className="w-full bg-gray-600 rounded shadow-lg p-8 m-4 md:max-w-sm md:mx-auto">
+          <h1 className="block w-full text-center text-grey-darkest mb-6">
+            Forgot your password?
+          </h1>
+          <div className="m-4">
+            Enter your email address you registered with and we'll send you a
+            link to reset it.
           </div>
-          <div>
-            <button type="submit">Reset Password</button>
-          </div>
-        </form>
+          <form
+            className="mb-4 md:flex md:flex-wrap md:justify-between"
+            onSubmit={handleSubmit}
+          >
+            <div className="flex flex-col mb-4 md:w-full">
+              <label
+                className="mb-2 uppercase font-bold text-lg text-grey-darkest"
+                htmlFor="email"
+              >
+                Email
+              </label>
+              <input
+                className="px-3 py-3 placeholder-gray-400 text-gray-700 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"
+                type="email"
+                name="email"
+                id="email"
+                ref={emailInput}
+              />
+            </div>
+            <button
+              className="block bg-blue-600 hover:bg-blue-800 text-white uppercase text-lg mx-auto p-4 rounded"
+              type="submit"
+            >
+              Send Email
+            </button>
+          </form>
+        </div>
       </div>
-      <style jsx>{`
-        .reset-password {
-          max-width: 21rem;
-          margin: 0 auto;
-          padding: 1rem;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-        }
-      `}</style>
     </Layout>
   );
 };
