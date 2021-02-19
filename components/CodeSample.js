@@ -21,6 +21,9 @@ const CodeSample = ({ user }) => {
         <br />
         <label>
           <code className="bg-black block m-2 p-2 break-words whitespace-pre overflow-x-scroll">
+            {copiedExample1 && (
+              <div className="float-right bg-white text-gray-500">Copied!</div>
+            )}
             <CopyToClipboard
               text={example1}
               onCopy={() => {
@@ -43,7 +46,6 @@ const CodeSample = ({ user }) => {
             </CopyToClipboard>
             {example1}
           </code>
-          {copiedExample1 && <div>Copied!</div>}
         </label>
         <br />
         <br />
@@ -60,6 +62,9 @@ const CodeSample = ({ user }) => {
         <i>don't forget to put the authorization header</i>
         <div>
           <code className="bg-black block m-2 p-2  break-words whitespace-pre overflow-x-scroll">
+            {copiedHeader && (
+              <div className="float-right bg-white text-gray-500">Copied!</div>
+            )}
             <CopyToClipboard
               text={playGroundHeader}
               onCopy={() => {
@@ -83,7 +88,6 @@ const CodeSample = ({ user }) => {
             {playGroundHeader}
           </code>
         </div>
-        {copiedHeader && <div>Copied!</div>}
         <br />
         <br />
         or curl like
@@ -91,6 +95,11 @@ const CodeSample = ({ user }) => {
         <label>
           <div>
             <code className="bg-black block m-2 p-2 break-words whitespace-pre overflow-x-scroll">
+              {copiedExample2 && (
+                <div className="float-right bg-white text-gray-500">
+                  Copied!
+                </div>
+              )}
               <CopyToClipboard
                 text={example2}
                 onCopy={() => {
@@ -113,7 +122,6 @@ const CodeSample = ({ user }) => {
               </CopyToClipboard>
               {example2}
             </code>
-            {copiedExample2 && <div>Copied!</div>}
           </div>
         </label>
       </li>
