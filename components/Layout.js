@@ -24,7 +24,7 @@ export const Layout = ({ children }) => (
         }
         ,
         .gradient {
-          background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+          background: linear-gradient(90deg, #8dbbe8 0%, #207bd2 100%);
         }
       `}</style>
       <Header />
