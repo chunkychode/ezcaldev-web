@@ -90,6 +90,51 @@ const Register = () => {
               />
               {errors.password && errors.password.message}
             </div>
+            <div> By proceeding you are agreeing to our:</div>
+            <div className="inline-block mb-2">
+              <div>
+                <input
+                  type="checkbox"
+                  class="form-checkbox h-5 w-5"
+                  name="terms"
+                  ref={register({ required: "This is required" })}
+                />
+                <span class="ml-2">
+                  <a
+                    href="/terms"
+                    class=" ml-1"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    Terms of Use
+                  </a>
+                </span>
+              </div>
+              {errors.terms && (
+                <span className="italic ml-1">{errors.terms.message}</span>
+              )}
+              <div>
+                <input
+                  type="checkbox"
+                  class="form-checkbox h-5 w-5"
+                  name="privacy"
+                  ref={register({ required: "This is required" })}
+                />
+                <span class="ml-2">
+                  <a
+                    href="/terms"
+                    class=" ml-1"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    Privacy Policy
+                  </a>
+                </span>
+              </div>
+              {errors.privacy && (
+                <span className="italic ml-1">{errors.privacy.message}</span>
+              )}
+            </div>
             <button
               className="block bg-blue-600 hover:bg-blue-800 text-white uppercase text-lg mx-auto p-4 rounded"
               type="submit"

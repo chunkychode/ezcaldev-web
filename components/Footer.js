@@ -14,7 +14,15 @@ const Footer = () => {
               rel="noopener noreferrer"
               target="_blank"
             >
-              Terms and Conditions
+              ● Terms of Use
+            </a>
+            <a
+              href="/privacy"
+              class="text-gray-600 ml-1"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              ● Privacy
             </a>
           </p>
         </div>
