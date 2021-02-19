@@ -1,41 +1,34 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useForm } from "react-hook-form";
+import { Alert } from "./Alert";
 
-export const Form = ({ label, errorMessage, onSubmit }) => (
-  <form onSubmit={onSubmit}>
-    <label>
-      <span>{label}</span>
-      <input type="text" name="username" required />
-    </label>
-
-    <button type="submit">Login</button>
-
-    {errorMessage && <p className="error">{errorMessage}</p>}
-
-    <style jsx>{`
-      form,
-      label {
-        display: flex;
-        flex-flow: column;
-      }
-      label > span {
-        font-weight: 600;
-      }
-      input {
-        padding: 8px;
-        margin: 0.3rem 0 1rem;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-      }
-      .error {
-        color: brown;
-        margin: 1rem 0 0;
-      }
-    `}</style>
-  </form>
-);
+export const Form = ({ children, title, errorMsg, onSubmit }) => {
+  const { handleSubmit } = useForm();
+  return (
+    <div className="flex items-center h-screen w-full bg-teal-lighter">
+      <div className="w-full bg-gray-600 rounded shadow-lg p-8 m-4 md:max-w-sm md:mx-auto">
+        <h1 className="block w-full text-center text-grey-darkest mb-6">
+          {title}
+        </h1>
+        {errorMsg && <Alert message={errorMsg} />}
+        <form
+          className="mb-4 md:flex md:flex-wrap md:justify-between"
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          {children}
+        </form>
+      </div>
+    </div>
+  );
+};
 
 Form.propTypes = {
-  errorMessage: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+  title: PropTypes.string,
+  errorMsg: PropTypes.string,
   onSubmit: PropTypes.func,
 };
