@@ -6,10 +6,10 @@ export default withSession(async (req, res) => {
     if (req.method === "POST") {
       const { email, password } = req.body;
 
-      const res = await registerUser({ email, password });
+      const resp = await registerUser({ email, password });
 
-      if (res?.message !== "Invalid credentials") {
-        const { authToken } = res;
+      if (resp?.message !== "Invalid credentials") {
+        const { authToken } = resp;
 
         console.log("register authenticate user authToken", authToken);
         const user = { isLoggedIn: true, email, authToken };

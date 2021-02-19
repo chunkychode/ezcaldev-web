@@ -12,7 +12,14 @@ const renderEmailNotVerified = ({ user }) => {
 
 const renderEmailVerified = ({ user }) => {
   if (user.isLoggedIn && user.emailVerified) {
-    return <CodeSample user={user} />;
+    return (
+      <>
+        <h1 className="text-3xl block w-full text-center text-grey-900 mb-6">
+          Getting started
+        </h1>
+        <CodeSample user={user} />
+      </>
+    );
   }
 };
 

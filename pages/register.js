@@ -1,11 +1,11 @@
 import { useState, useRef } from "react";
+import { useForm } from "react-hook-form";
 import useUser from "../lib/useUser";
-import { Layout } from "../components";
+import { Layout, Alert } from "../components";
 import fetchJson from "../lib/fetchJson";
 
 const Register = () => {
-  const emailInput = useRef();
-  const passwordInput = useRef();
+  const { register, handleSubmit, errors } = useForm();
 
   const { mutateUser } = useUser({
     redirectTo: "/register-success",
@@ -14,11 +14,8 @@ const Register = () => {
 
   const [errorMsg, setErrorMsg] = useState("");
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-
-    const email = emailInput.current.value;
-    const password = passwordInput.current.value;
+  async function onSubmit(data) {
+    const { email, password } = data;
 
     const body = JSON.stringify({ email, password });
 
@@ -43,10 +40,10 @@ const Register = () => {
           <h1 className="block w-full text-center text-grey-darkest mb-6">
             Register
           </h1>
+          {errorMsg && <Alert message={errorMsg} />}
           <form
             className="mb-4 md:flex md:flex-wrap md:justify-between"
-            action="/"
-            method="post"
+            onSubmit={handleSubmit(onSubmit)}
           >
             <div className="flex flex-col mb-4 md:w-full">
               <label
@@ -60,8 +57,15 @@ const Register = () => {
                 type="email"
                 name="email"
                 id="email"
-                ref={emailInput}
+                ref={register({
+                  required: true,
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: "Invalid email address",
+                  },
+                })}
               />
+              {errors.email && errors.email.message}
             </div>
             <div className="flex flex-col mb-6 md:w-full">
               <label
@@ -75,8 +79,16 @@ const Register = () => {
                 type="password"
                 name="password"
                 id="password"
-                ref={passwordInput}
+                ref={register({
+                  required: true,
+                  pattern: {
+                    value: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/i,
+                    message:
+                      "Must contain at least one number and one uppercase and lowercase letter, and at least 8 characters",
+                  },
+                })}
               />
+              {errors.password && errors.password.message}
             </div>
             <button
               className="block bg-blue-600 hover:bg-blue-800 text-white uppercase text-lg mx-auto p-4 rounded"

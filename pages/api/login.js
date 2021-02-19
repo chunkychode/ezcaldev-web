@@ -7,10 +7,11 @@ export default withSession(async (req, res) => {
     if (req.method === "POST") {
       const { email, password } = req.body;
 
-      const res = await authenticateUser({ email, password });
+      const resp = await authenticateUser({ email, password });
+      console.log("login res", resp);
 
-      if (res?.message !== "Invalid credentials") {
-        const { authToken } = res;
+      if (resp?.message !== "Invalid credentials") {
+        const { authToken } = resp;
         const decoded = jwt_decode(authToken);
         const { emailVerified } = decoded;
 
@@ -25,6 +26,7 @@ export default withSession(async (req, res) => {
 
     return res.status(404).send("");
   } catch (error) {
+    console.log("login error", error);
     const { response: fetchResponse } = error;
     res.status(fetchResponse?.status || 500).json(error.data);
   }

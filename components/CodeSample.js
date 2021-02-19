@@ -20,17 +20,29 @@ const CodeSample = ({ user }) => {
         <br />
         <br />
         <label>
-          <pre>{example1}</pre>
-          <CopyToClipboard
-            text={example1}
-            onCopy={() => {
-              setCopiedExample1(true);
-              setCopiedExample2(false);
-              setCopiedHeader(false);
-            }}
-          >
-            <button>Copy to clipboard with button</button>
-          </CopyToClipboard>
+          <code className="bg-black block m-2 p-2 break-words whitespace-pre overflow-x-scroll">
+            <CopyToClipboard
+              text={example1}
+              onCopy={() => {
+                setCopiedExample1(true);
+                setCopiedExample2(false);
+                setCopiedHeader(false);
+              }}
+            >
+              <button className="bg-white float-right">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                >
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+                </svg>
+              </button>
+            </CopyToClipboard>
+            {example1}
+          </code>
           {copiedExample1 && <div>Copied!</div>}
         </label>
         <br />
@@ -46,40 +58,63 @@ const CodeSample = ({ user }) => {
         </a>
         <br />
         <i>don't forget to put the authorization header</i>
-        <div style={{ width: 250 }}>
-          <pre>{playGroundHeader}</pre>
+        <div>
+          <code className="bg-black block m-2 p-2  break-words whitespace-pre overflow-x-scroll">
+            <CopyToClipboard
+              text={playGroundHeader}
+              onCopy={() => {
+                setCopiedHeader(true);
+                setCopiedExample2(false);
+                setCopiedExample1(false);
+              }}
+            >
+              <button className="bg-white float-right">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                >
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+                </svg>
+              </button>
+            </CopyToClipboard>
+            {playGroundHeader}
+          </code>
         </div>
-        <CopyToClipboard
-          text={playGroundHeader}
-          onCopy={() => {
-            setCopiedHeader(true);
-            setCopiedExample2(false);
-            setCopiedExample1(false);
-          }}
-        >
-          <button>Copy to clipboard with button</button>
-        </CopyToClipboard>
         {copiedHeader && <div>Copied!</div>}
         <br />
         <br />
         or curl like
         <br />
         <label>
-          <div style={{ width: 250 }}>
-            {" "}
-            <pre>{example2}</pre>
+          <div>
+            <code className="bg-black block m-2 p-2 break-words whitespace-pre overflow-x-scroll">
+              <CopyToClipboard
+                text={example2}
+                onCopy={() => {
+                  setCopiedExample2(true);
+                  setCopiedExample1(false);
+                  setCopiedHeader(false);
+                }}
+              >
+                <button className="bg-white float-right">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    width="24"
+                  >
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+                  </svg>
+                </button>
+              </CopyToClipboard>
+              {example2}
+            </code>
+            {copiedExample2 && <div>Copied!</div>}
           </div>
-          <CopyToClipboard
-            text={example2}
-            onCopy={() => {
-              setCopiedExample2(true);
-              setCopiedExample1(false);
-              setCopiedHeader(false);
-            }}
-          >
-            <button>Copy to clipboard with button</button>
-          </CopyToClipboard>
-          {copiedExample2 && <div>Copied!</div>}
         </label>
       </li>
     </ul>

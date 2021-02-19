@@ -46,18 +46,19 @@
     ]
   },
   "dependencies": {
+    "autoprefixer": "^10.0.4",
+    "jwt-decode": "^3.1.2",
+    "next": "10.0.6",
     "next-iron-session": "4.1.10",
     "node-fetch": "2.6.1",
-    "prop-types": "15.7.2",
-    "swr": "0.4.1",
-    "next": "10.0.6",
-    "jwt-decode": "^3.1.2",
-    "react-copy-to-clipboard": "^5.0.3",
-    "react-iframe": "^1.8.0",
-    "react": "17.0.1",
-    "react-dom": "^17.0.1",
-    "autoprefixer": "^10.0.4",
     "postcss": "^8.1.10",
+    "prop-types": "15.7.2",
+    "react": "17.0.1",
+    "react-copy-to-clipboard": "^5.0.3",
+    "react-dom": "^17.0.1",
+    "react-hook-form": "^6.15.2",
+    "react-iframe": "^1.8.0",
+    "swr": "0.4.1",
     "tailwindcss": "^2.0.2"
   }
 }

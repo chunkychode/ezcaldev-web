@@ -1,18 +1,15 @@
 import { useState, useRef } from "react";
+import { useForm } from "react-hook-form";
 import Router from "next/router";
-import { Layout } from "../components";
+import { Layout, Alert } from "../components";
 import fetchJson from "../lib/fetchJson";
 
 const ResetPassword = () => {
-  const emailInput = useRef();
-
+  const { register, handleSubmit, errors } = useForm();
   const [errorMsg, setErrorMsg] = useState("");
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-
-    const email = emailInput.current.value;
-
+  async function onSubmit(data) {
+    const { email } = data;
     const body = JSON.stringify({ email });
 
     try {
@@ -24,7 +21,7 @@ const ResetPassword = () => {
       console.log("res", res);
       Router.push("/reset-password-success");
     } catch (error) {
-      console.error("An unexpected error happened:", error);
+      console.error("An unexpected error happened:", JSON.stringify(error));
       setErrorMsg(error.data.message);
     }
   }
@@ -36,13 +33,14 @@ const ResetPassword = () => {
           <h1 className="block w-full text-center text-grey-darkest mb-6">
             Forgot your password?
           </h1>
+          {errorMsg && <Alert message={errorMsg} />}
           <div className="m-4">
             Enter your email address you registered with and we'll send you a
             link to reset it.
           </div>
           <form
             className="mb-4 md:flex md:flex-wrap md:justify-between"
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmit(onSubmit)}
           >
             <div className="flex flex-col mb-4 md:w-full">
               <label
@@ -56,8 +54,15 @@ const ResetPassword = () => {
                 type="email"
                 name="email"
                 id="email"
-                ref={emailInput}
+                ref={register({
+                  required: true,
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: "Invalid email address",
+                  },
+                })}
               />
+              {errors.email && errors.email.message}
             </div>
             <button
               className="block bg-blue-600 hover:bg-blue-800 text-white uppercase text-lg mx-auto p-4 rounded"

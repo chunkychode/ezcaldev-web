@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { useState, useRef } from "react";
+import { useForm } from "react-hook-form";
 import useUser from "../lib/useUser";
-import { Layout } from "../components";
+import { Layout, Alert } from "../components";
 import fetchJson from "../lib/fetchJson";
 
 const Login = () => {
-  const emailInput = useRef();
-  const passwordInput = useRef();
+  const { register, handleSubmit, errors } = useForm();
 
   const { mutateUser } = useUser({
     redirectTo: "/",
@@ -15,12 +15,8 @@ const Login = () => {
 
   const [errorMsg, setErrorMsg] = useState("");
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-
-    const email = emailInput.current.value;
-    const password = passwordInput.current.value;
-
+  async function onSubmit(data) {
+    const { email, password } = data;
     const body = JSON.stringify({ email, password });
 
     try {
@@ -32,7 +28,7 @@ const Login = () => {
         })
       );
     } catch (error) {
-      console.error("An unexpected error happened:", error);
+      console.error("An unexpected error happened:", JSON.stringify(error));
       setErrorMsg(error.data.message);
     }
   }
@@ -44,9 +40,10 @@ const Login = () => {
           <h1 className="block w-full text-center text-grey-900 mb-6">
             Log In
           </h1>
+          {errorMsg && <Alert message={errorMsg} />}
           <form
             className="mb-4 md:flex md:flex-wrap md:justify-between"
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmit(onSubmit)}
           >
             <div className="flex flex-col mb-4 md:w-full">
               <label
@@ -60,9 +57,10 @@ const Login = () => {
                 type="email"
                 name="email"
                 id="email"
-                ref={emailInput}
+                ref={register({ required: true })}
                 className="px-3 py-3 placeholder-gray-400 text-gray-700 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"
               />
+              {errors.email && "Email is required."}
             </div>
             <div className="flex flex-col mb-6 md:w-full">
               <label
@@ -74,10 +72,13 @@ const Login = () => {
               <input
                 type="password"
                 name="password"
-                ref={passwordInput}
+                ref={register({
+                  required: true,
+                })}
                 id="password"
                 class="px-3 py-3 placeholder-gray-400 text-gray-700 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:shadow-outline w-full"
               />
+              {errors.password && "Password is required."}
             </div>
             <button
               className="block bg-blue-600 hover:bg-blue-800 text-white uppercase text-lg mx-auto p-4 rounded"

@@ -14,6 +14,14 @@ export const Layout = ({ children }) => (
         body {
           font-family: "Source Sans Pro", sans-serif;
         }
+        
+        pre {
+          white-space: pre-wrap; /* css-3 */
+          white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+          white-space: -pre-wrap; /* Opera 4-6 */
+          white-space: -o-pre-wrap; /* Opera 7 */
+          word-wrap: break-word; /* Internet Explorer 5.5+ */
+        }
         ,
         .gradient {
           background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
