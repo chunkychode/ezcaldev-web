@@ -301,7 +301,7 @@ const finalHero = () => {
       </div>
 
       <h3 className="my-4 text-3xl leading-tight">
-        Right now our servie is free for up to 5 calendars while we are
+        Right now our service is free for up to 5 calendars while we are
         launching. Future pricing will be determined later.
       </h3>
 

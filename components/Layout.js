@@ -6,15 +6,18 @@ import PropTypes from "prop-types";
 
 export const Layout = ({ children }) => (
   <>
-    <div className="container w-full leading-normal tracking-normal text-white gradient">
-      <Head>
-        <title>EZCALDEV</title>
-      </Head>
+    <Head>
+      <title>EZCALDEV</title>
+      <meta charSet="UTF-8" />
+      <meta name="google" content="notranslate" />
+      <meta http-equiv="Content-Language" content="en" />
+    </Head>
+    <div className="container w-full leading-normal tracking-normal text-white gradient flex flex-col min-h-screen">
       <style jsx>{`
         body {
           font-family: "Source Sans Pro", sans-serif;
         }
-        
+
         pre {
           white-space: pre-wrap; /* css-3 */
           white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
@@ -28,7 +31,7 @@ export const Layout = ({ children }) => (
         }
       `}</style>
       <Header />
-      <main>{children}</main>
+      <main className="flex-grow">{children}</main>
       <Footer />
     </div>
   </>

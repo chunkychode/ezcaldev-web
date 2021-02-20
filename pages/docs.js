@@ -10,15 +10,19 @@ export default function Docs() {
 
   return (
     <>
-      <Header />
-      <Iframe
-        url="/docs/schema/index.html"
-        width="100%"
-        height={height}
-        id="myId"
-        position="relative"
-      />
-      <Footer />
+      <body className="flex flex-col min-h-screen ">
+        <Header />
+        <main className="flex-grow">
+          <Iframe
+            url="/gqlDocs/index.html"
+            width="100%"
+            height={height}
+            id="myId"
+            position="relative"
+          />
+        </main>
+        <Footer />
+      </body>
     </>
   );
 }

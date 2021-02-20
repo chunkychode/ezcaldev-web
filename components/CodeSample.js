@@ -9,8 +9,8 @@ const CodeSample = ({ user }) => {
   const [copiedExample2, setCopiedExample2] = React.useState(false);
   const [copiedHeader, setCopiedHeader] = React.useState(false);
 
-  const example1 = `curl -i -X POST https://chunkyauth.azurewebsites.net/api/Login -H "Content-Type: application/json" -d "{\"email\":\"${emailStub}\", \"password\":\"PASSWORD\"}"`;
-  const example2 = `curl -i -X POST https://chunkycalql.azurewebsites.net/api/graphql -H "Content-Type: application/json" -H "Authorization: ${authTokenStub}" -d '{"query": "query {Event {title}}"}'`;
+  const example1 = `curl -i -X POST ${process.env.NEXT_PUBLIC_AUTH_URL}/api/Login -H "Content-Type: application/json" -d "{\"email\":\"${emailStub}\", \"password\":\"PASSWORD\"}"`;
+  const example2 = `curl -i -X POST ${process.env.NEXT_PUBLIC_CAL_GQL_URL}/api/graphql -H "Content-Type: application/json" -H "Authorization: ${authTokenStub}" -d '{"query": "query {Event {title}}"}'`;
   const playGroundHeader = `{"Authorization":"${authTokenStub}"}`;
   return (
     <ul>
@@ -53,7 +53,7 @@ const CodeSample = ({ user }) => {
       <li>
         Visit{" "}
         <a
-          href="https://chunkycalql.azurewebsites.net/api/graphql"
+          href={`${process.env.NEXT_PUBLIC_CAL_GQL_URL}/graphql`}
           target="_blank"
         >
           <u>Calendar playground</u>
@@ -94,7 +94,7 @@ const CodeSample = ({ user }) => {
         <br />
         <label>
           <div>
-            <code className="bg-black block m-2 p-2 break-words whitespace-pre overflow-x-scroll">
+            <code className="bg-black block m-2 p-2 break-words whitespace-pre overflow-visible">
               {copiedExample2 && (
                 <div className="float-right bg-white text-gray-500">
                   Copied!
