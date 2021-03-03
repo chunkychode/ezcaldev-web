@@ -274,7 +274,7 @@ const Privacy = () => {
         <h1 className="font-bold text-lg">CONTACT US</h1>
         <div className="m-1">
           If you have questions or comments about this Privacy Policy, please
-          contact us at: [ADD EMAIL]
+          contact us at: support@ezcaldev.com
         </div>
       </div>
     </Layout>
