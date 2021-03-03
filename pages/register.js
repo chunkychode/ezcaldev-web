@@ -95,14 +95,14 @@ const Register = () => {
               <div>
                 <input
                   type="checkbox"
-                  class="form-checkbox h-5 w-5"
+                  className="form-checkbox h-5 w-5"
                   name="terms"
                   ref={register({ required: "This is required" })}
                 />
-                <span class="ml-2">
+                <span className="ml-2">
                   <a
                     href="/terms"
-                    class=" ml-1"
+                    className=" ml-1"
                     rel="noopener noreferrer"
                     target="_blank"
                   >
@@ -116,14 +116,14 @@ const Register = () => {
               <div>
                 <input
                   type="checkbox"
-                  class="form-checkbox h-5 w-5"
+                  className="form-checkbox h-5 w-5"
                   name="privacy"
                   ref={register({ required: "This is required" })}
                 />
-                <span class="ml-2">
+                <span className="ml-2">
                   <a
                     href="/terms"
-                    class=" ml-1"
+                    className=" ml-1"
                     rel="noopener noreferrer"
                     target="_blank"
                   >

@@ -20,7 +20,9 @@ const Header = () => {
             </a>
             <a
               className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase"
-              href="/docs"
+              href={`${process.env.NEXT_PUBLIC_DOCS_URL}`}
+              target="_blank"
+              rel="noreferrer"
             >
               Docs
             </a>

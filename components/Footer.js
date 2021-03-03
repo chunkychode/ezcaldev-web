@@ -10,7 +10,7 @@ const Footer = () => {
             © 2021 Chunky Company --
             <a
               href="/terms"
-              class="text-gray-600 ml-1"
+              className="text-gray-600 ml-1"
               rel="noopener noreferrer"
               target="_blank"
             >
@@ -18,7 +18,7 @@ const Footer = () => {
             </a>
             <a
               href="/privacy"
-              class="text-gray-600 ml-1"
+              className="text-gray-600 ml-1"
               rel="noopener noreferrer"
               target="_blank"
             >
